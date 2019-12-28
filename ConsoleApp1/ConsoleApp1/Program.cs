@@ -15,12 +15,12 @@ namespace ConsoleApp1
         static string[] szerzo = new string[200];
         static string[] cim = new string[200];
         static int db2 = 0;
-        static string tetszolegesszoveg = "KRUMPLIS TÉSZTA";
+        static string tetszolegesszoveg = "ÁG";
         static string kodoltszoveg = tetszolegesszoveg;
-        static string baba = "baba";
+        static string fasszomtuggygamiez = "O H";
 
         public static void Main(string[] args)
-        
+
         {
             //2. Beolvasás morzeabc.txt
             Beolvasas("morzeabc.txt");
@@ -36,30 +36,35 @@ namespace ConsoleApp1
 
             //6. Előre megadott szöveg Morze szöveggé alakítása és kiiratása
             Morze2Szoveg(kodoltszoveg);
-            Console.WriteLine("Teszt: {0}");
-            
+            //Console.WriteLine("Teszt1: {0}", Morze2Szoveg(kodoltszoveg));
+            //Console.WriteLine("Teszt2: {0}", Morze2Szoveg(fasszomtuggygamiez));
 
             Console.ReadKey();
         }
 
-        public static string Morze2Szoveg( string ki)
+        public static string Morze2Szoveg(string bemenet)
         {
-            int kodolthossz = kodoltszoveg.Length;
+            int kodolthossz = bemenet.Length;
             string kikodolt = "";
             for (int i = 0; i < kodolthossz; i++)
             {
                 string kikod = "";
                 for (int z = 0; z < db; z++)
                 {
-                    if (betu[z] == kodoltszoveg.Substring(i, 1))
+                    if (betu[z] == " ")
                     {
-                        //Console.Write("{0} ", morzejel[z]);
-                        kikod += morzejel[z];
+                        kikod = kikod + " ";
+                    }
+
+                    else if (betu[z] == bemenet.Substring(i, 1))
+                    {
+                        kikod = kikod + morzejel[z];
                     }
                 }
                 kikodolt = kikod;
+                
             }
-
+            Console.WriteLine("Cikluskülső teszt: {0} ", kikodolt);
             return kikodolt;
         }
 
