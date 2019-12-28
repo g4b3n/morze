@@ -1,0 +1,7 @@
+D:\csharp_gyakorlás\beadando\morze\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.exe.config
+D:\csharp_gyakorlás\beadando\morze\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.exe
+D:\csharp_gyakorlás\beadando\morze\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.pdb
+D:\csharp_gyakorlás\beadando\morze\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.csprojAssemblyReference.cache
+D:\csharp_gyakorlás\beadando\morze\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.csproj.CoreCompileInputs.cache
+D:\csharp_gyakorlás\beadando\morze\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.exe
+D:\csharp_gyakorlás\beadando\morze\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.pdb
