@@ -15,9 +15,8 @@ namespace ConsoleApp1
         static string[] szerzo = new string[200];
         static string[] cim = new string[200];
         static int db2 = 0;
-        static string tetszolegesszoveg = "ÁG";
-        static string kodoltszoveg = tetszolegesszoveg;
-        static string fasszomtuggygamiez = "O H";
+        static string kodoltszoveg = "M !";
+
 
         public static void Main(string[] args)
 
@@ -36,8 +35,8 @@ namespace ConsoleApp1
 
             //6. Előre megadott szöveg Morze szöveggé alakítása és kiiratása
             Morze2Szoveg(kodoltszoveg);
-            //Console.WriteLine("Teszt1: {0}", Morze2Szoveg(kodoltszoveg));
-            //Console.WriteLine("Teszt2: {0}", Morze2Szoveg(fasszomtuggygamiez));
+            Console.WriteLine("Teszt1: {0}", Morze2Szoveg(kodoltszoveg));
+
 
             Console.ReadKey();
         }
@@ -46,25 +45,27 @@ namespace ConsoleApp1
         {
             int kodolthossz = bemenet.Length;
             string kikodolt = "";
+            string kikod = "";
             for (int i = 0; i < kodolthossz; i++)
             {
-                string kikod = "";
                 for (int z = 0; z < db; z++)
                 {
-                    if (betu[z] == " ")
-                    {
-                        kikod = kikod + " ";
-                    }
 
-                    else if (betu[z] == bemenet.Substring(i, 1))
+                    if (betu[z] == bemenet.Substring(i, 1))   //azt gondolom ha talál egy kódoltat az állományból akkor cseréli
                     {
-                        kikod = kikod + morzejel[z];
+                        kikod = kikod + "" + morzejel[z];
                     }
+                    else if (bemenet.Substring(i, 1) == " ")  //itt azt szerettem volna hogy ha üres/szóköz van akkor oda szintén tegyen egy space-t
+                    {
+                        kikod = kikod + "";
+                    }
+                    else    //aztán eszembe jutott hogy mi van akkor ha olyan karaktert kellene forgatni ami nincs az alap állományban, helyére tegyen &-t (pl-Ű nincs)
+                    { kikod = kikod + "&"; }
                 }
                 kikodolt = kikod;
-                
+
             }
-            Console.WriteLine("Cikluskülső teszt: {0} ", kikodolt);
+            //Console.WriteLine("Cikluskülső teszt: {0} ", kikodolt);
             return kikodolt;
         }
 
