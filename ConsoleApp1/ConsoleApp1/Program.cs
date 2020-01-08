@@ -15,7 +15,8 @@ namespace ConsoleApp1
         static string[] szerzo = new string[200];
         static string[] cim = new string[200];
         static int db2 = 0;
-        static string kodoltszoveg = "M !";
+        static string kodoltszoveg = "TESZT SZOVEG!";
+        static string morzeszoveg = "...   --..   ;.-       -...   .-   .-.   .--.-   -   ...   .--.-   --.       .-   --..   --..--       .-   --   ..";
 
 
         public static void Main(string[] args)
@@ -34,38 +35,83 @@ namespace ConsoleApp1
             Beolvasas2("morze.txt");
 
             //6. Előre megadott szöveg Morze szöveggé alakítása és kiiratása
-            Morze2Szoveg(kodoltszoveg);
-            Console.WriteLine("Teszt1: {0}", Morze2Szoveg(kodoltszoveg));
+            Szoveg2Morze(kodoltszoveg);
+            Console.WriteLine("Teszt1: {0}", Szoveg2Morze(kodoltszoveg));
 
+            Morze2Szoveg(morzeszoveg);
 
             Console.ReadKey();
         }
 
-        public static string Morze2Szoveg(string bemenet)
+        public static void Morze2Szoveg(string morzeszoveg)
+        {
+
+            string bemenet2 = morzeszoveg;
+            string keresett = "       ";
+            int hanyszor = 0;
+            for (int i = 0; i < bemenet2.Length; i++)
+            {
+                if (bemenet2.Substring(i,i+7).Equals(keresett))
+                {
+                    hanyszor++;
+                }
+            }
+                                          
+            // Innen már kusza és nem működik feladom...
+            string[] szavak = bemenet2.Split(bemenet2[hanyszor], "       ");
+            string ujszoveg = "";
+
+
+            for (int i = 0; i < szavak.Length; i++)
+            {1
+                string[] betuk = szavak[i].Split(betuk[], i, "   ");
+                for (int j = 0; j < betuk.Length; j++)
+                {
+                    for (int k = 0; k < db; k++)
+                    {
+
+                        if (betuk[j].Equals(morzejel[k]))
+                        {
+                            ujszoveg += betu[k];
+                        }
+                    }
+                }
+            }
+        }
+
+
+        public static string Szoveg2Morze(string bemenet)
         {
             int kodolthossz = bemenet.Length;
             string kikodolt = "";
             string kikod = "";
             for (int i = 0; i < kodolthossz; i++)
             {
+                string bemenetBetuje = bemenet.Substring(i, 1); // optimalizáljunk kicsit :)
+                bool found = false;
                 for (int z = 0; z < db; z++)
                 {
+                    if (betu[z] == bemenetBetuje) //azt gondolom ha talál egy kódoltat az állományból akkor cseréli
+                    {
+                        kikod = kikod + " " + morzejel[z];
+                        found = true;
+                        break; // ebben a ciklusban nem kell tovább menni, jöhet a bemenet következő karaktere
+                    }
+                    else if (bemenetBetuje == " ") //itt azt szerettem volna hogy ha üres/szóköz van akkor oda szintén tegyen egy space-t
+                    {
+                        kikod = kikod + " ";
+                        found = true; // ez is találatnak számít, de érdemesebb lenne felvenni a táblákba
+                        break; // ebben a ciklusban nem kell tovább menni, jöhet a bemenet következő karaktere
+                    }
+                }
 
-                    if (betu[z] == bemenet.Substring(i, 1))   //azt gondolom ha talál egy kódoltat az állományból akkor cseréli
-                    {
-                        kikod = kikod + "" + morzejel[z];
-                    }
-                    else if (bemenet.Substring(i, 1) == " ")  //itt azt szerettem volna hogy ha üres/szóköz van akkor oda szintén tegyen egy space-t
-                    {
-                        kikod = kikod + "";
-                    }
-                    else    //aztán eszembe jutott hogy mi van akkor ha olyan karaktert kellene forgatni ami nincs az alap állományban, helyére tegyen &-t (pl-Ű nincs)
-                    { kikod = kikod + "&"; }
+                //úgy ment végig a belső ciklus, hogy nem volt találat ?
+                if (!found) //aztán eszembe jutott hogy mi van akkor ha olyan karaktert kellene forgatni ami nincs az alap állományban, helyére tegyen &-t (pl-Ű nincs)
+                {
+                    kikod = kikod + "&";
                 }
                 kikodolt = kikod;
-
             }
-            //Console.WriteLine("Cikluskülső teszt: {0} ", kikodolt);
             return kikodolt;
         }
 
